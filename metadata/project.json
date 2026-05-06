@@ -1,0 +1,32 @@
+{
+  "index": 101,
+  "phase": 1,
+  "batch": 12,
+  "name": "rollbarrel",
+  "planned_name": "rollbarrel",
+  "language": "Go",
+  "category": "Automation",
+  "goal": "Plan backup retention and dry-run deletion reports.",
+  "repository_url": "https://github.com/ZachL111/rollbarrel",
+  "verification_command": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/verify.ps1",
+  "model": {
+    "inputs": [
+      "demand",
+      "capacity",
+      "latency",
+      "risk",
+      "weight"
+    ],
+    "threshold": 150,
+    "risk_penalty": 5,
+    "latency_penalty": 3,
+    "weight_bonus": 6,
+    "decision_rule": "accept when score is greater than or equal to threshold, otherwise review"
+  },
+  "quality_gates": [
+    "readme constraint scan",
+    "fixture presence check",
+    "metadata JSON parse",
+    "language verifier"
+  ]
+}
