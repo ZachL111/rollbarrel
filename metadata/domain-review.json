@@ -1,0 +1,73 @@
+{
+  "repo": "rollbarrel",
+  "language": "Go",
+  "category": "Automation",
+  "goal": "Plan backup retention and dry-run deletion reports.",
+  "review_model": {
+    "terms": [
+      "dry-run spread",
+      "rename risk",
+      "operator cost",
+      "idempotence"
+    ],
+    "lanes": [
+      "ship",
+      "watch",
+      "hold"
+    ],
+    "score": "signal * 2 + slack + confidence - drag * 3",
+    "purpose": "surface the domain-specific cases that need the most careful review"
+  },
+  "cases": [
+    {
+      "name": "baseline",
+      "focus": "dry-run spread",
+      "signal": 60,
+      "slack": 46,
+      "drag": 17,
+      "confidence": 60,
+      "score": 175,
+      "lane": "ship"
+    },
+    {
+      "name": "stress",
+      "focus": "rename risk",
+      "signal": 55,
+      "slack": 47,
+      "drag": 14,
+      "confidence": 86,
+      "score": 201,
+      "lane": "ship"
+    },
+    {
+      "name": "edge",
+      "focus": "operator cost",
+      "signal": 68,
+      "slack": 41,
+      "drag": 30,
+      "confidence": 67,
+      "score": 154,
+      "lane": "ship"
+    },
+    {
+      "name": "recovery",
+      "focus": "idempotence",
+      "signal": 56,
+      "slack": 36,
+      "drag": 19,
+      "confidence": 88,
+      "score": 179,
+      "lane": "ship"
+    },
+    {
+      "name": "stale",
+      "focus": "dry-run spread",
+      "signal": 88,
+      "slack": 34,
+      "drag": 32,
+      "confidence": 68,
+      "score": 182,
+      "lane": "ship"
+    }
+  ]
+}
